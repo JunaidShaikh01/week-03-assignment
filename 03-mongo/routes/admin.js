@@ -23,7 +23,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/courses", (req, res) => {
+router.post("/courses", adminMiddleware, (req, res) => {
   // Implement course creation logic
   try {
     const { title, description, price, imageLink, published } = req.body;
@@ -46,7 +46,7 @@ router.post("/courses", (req, res) => {
   }
 });
 
-router.get("/courses", (req, res) => {
+router.get("/courses", adminMiddleware, (req, res) => {
   // Implement fetching all courses logic
 
   Course.find().then((courses) => {
